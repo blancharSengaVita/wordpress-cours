@@ -1,0 +1,11 @@
+/*
+!.gitignore
+!README.md
+!database.sql
+
+!wordpress/wp-content
+wordpress/wp-content/*
+!wordpress/wp-content/themes
+wp-content/themes/*
+!wp-content/themes/portfolio
+!wp-content/themes/dw
