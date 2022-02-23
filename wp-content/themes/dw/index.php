@@ -30,6 +30,40 @@
                 <?php endif; ?>
             </div>
         </section>
+        <section>
+            <section class="layout__trips trips">
+                <h2 class="trips__title"></h2>
+                <div class="trips__container"></div>
+                <?php $trips = new WP_Query([
+                        //arguments
+                    'post_type' => 'trip',
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'post_per_page' => '3',
+                ]); ?>
+                <!-- debut boucle -->
+                <?php if($trips->have_posts()): while($trips-> have_posts()): $trips->the_post();?>
+                <article class="trip">
+                    <a href="#" class="trip__link">Lire le recit de voyage "titre" <?= get_the_title ?></a>
+                    <div class="trip__card">
+                        <header class="trip__head">
+                            <h3 class="trip__title"></h3>
+                            <p class="trip__date"> le <datetime class="post__date">
+
+                                </datetime></p>
+                            <figure class="trip__fig">
+                                <?= get_the_post_thumbnail(null, 'medium_large', ['class' => 'post__thumb', 'id' => 'test']); ?>
+                            </figure>
+                        </header>
+                    </div>
+                </article>
+                <?php endwhile ?>
+                <p class="trips__empty">pas de voyage</p>
+                <!-- article c'est une carte qui represente une ressource pour -->
+                <!-- fin de boucle-->
+            </section>
+
+        </section>
     </main>
 
 <?php get_footer(); ?>
